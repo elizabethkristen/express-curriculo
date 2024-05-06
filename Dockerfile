@@ -7,11 +7,14 @@ WORKDIR /app
 # Copia apenas os arquivos package.json e package-lock.json para aproveitar o cache
 COPY package*.json ./
 
-# Instala apenas as dependências de produção com um cache limpo
+# Instala as dependências de produção com um cache limpo
 RUN npm ci --omit=dev
 
 # Copia o restante do projeto para o diretório de trabalho
 COPY . .
+
+# Compila o código TypeScript para JavaScript
+RUN npm run build
 
 # Configura a porta da aplicação
 ENV PORT=8080
