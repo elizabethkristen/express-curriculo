@@ -104,7 +104,7 @@ npm run dev
               "nivel": "Básico"
             }
           ]
-}
+      }
         ```
 
     - **Exemplo de resposta bem-sucedida**:
@@ -157,7 +157,7 @@ npm run dev
                     }
                   ]
                 }
-        ```
+      ```
 
 - **Obter todos os candidatos**: `GET /candidatos`
     - **Descrição**: Retorna todos os candidatos com seus campos relacionados.
