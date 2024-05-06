@@ -1,5 +1,4 @@
-# Copia package*.json para o diretório de trabalho
-COPY package*.json ./
+
 
 # Instala as dependências de produção
 RUN npm install --only=production
