@@ -1,19 +1,23 @@
+# Use a imagem oficial do Node.js 20
 FROM node:20
 
-# Instala as dependências de produção
-RUN npm install --only=production
+# Define o diretório de trabalho como /app
+WORKDIR /app
 
-# Instala as definições de tipo para express
-RUN npm install @types/express --save-dev
+# Copia apenas os arquivos package.json e package-lock.json para aproveitar o cache
+COPY package*.json ./
 
-# Copia o restante do código para o diretório de trabalho
+# Instala apenas as dependências de produção com um cache limpo
+RUN npm ci --omit=dev
+
+# Copia o restante do projeto para o diretório de trabalho
 COPY . .
 
-# Executa a compilação do TypeScript
-RUN npm run build
+# Configura a porta da aplicação
+ENV PORT=8080
 
-# Exponha a porta 3000
-EXPOSE 3000
+# Expõe a porta 8080 para permitir o acesso externo
+EXPOSE 8080
 
-# Inicia o servidor Node.js
-CMD ["node", "dist/index.js"]
+# Define o comando padrão para iniciar a aplicação
+CMD ["npm", "start"]
