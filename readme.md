@@ -52,6 +52,8 @@ npm run dev
 
 ### Candidatos
 
+URL base da API: https://express-curriculo.onrender.com
+
 - **Criar um novo candidato**: `POST /candidatos`
     - **Descrição**: Cria um novo candidato com os campos relacionados (experiências profissionais, educação, habilidades e idiomas).
     - **Corpo da requisição**: JSON contendo os dados do candidato a ser criado.
