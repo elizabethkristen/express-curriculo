@@ -4,11 +4,14 @@ FROM node:20
 # Define o diretório de trabalho como /app
 WORKDIR /app
 
-# Copia apenas os arquivos package.json e package-lock.json para aproveitar o cache
+# Copia os arquivos package.json e package-lock.json para aproveitar o cache
 COPY package*.json ./
 
 # Instala as dependências de produção com um cache limpo
 RUN npm ci --omit=dev
+
+# Instala as definições de tipo para express
+RUN npm install @types/express --save-dev
 
 # Copia o restante do projeto para o diretório de trabalho
 COPY . .
