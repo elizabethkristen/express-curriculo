@@ -1,4 +1,4 @@
-
+FROM node:20
 
 # Instala as dependências de produção
 RUN npm install --only=production
